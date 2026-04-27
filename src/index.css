@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Theme tokens. Channels are stored as space-separated RGB triplets so Tailwind's
+     `<alpha-value>` modifier keeps working (e.g. `bg-bg/80`). */
+  :root {
+    /* Light theme — blue accent on near-white surfaces */
+    --bg: 250 250 252;
+    --bg2: 244 245 249;
+    --bg3: 234 236 242;
+    --card: 255 255 255;
+    --accent: 37 99 235;          /* blue-600 */
+    --accent-fg: 255 255 255;     /* white text on blue button */
+    --accent2: 14 165 233;        /* sky-500 */
+    --accent3: 99 102 241;        /* indigo-500 */
+    --muted: 100 116 139;         /* slate-500 */
+    --text: 15 23 42;             /* slate-900 */
+    --fg: 15 23 42;
+    --scroll-track: 244 245 249;
+    --scroll-thumb: 203 213 225;
+    --scroll-thumb-hover: 148 163 184;
+  }
+
+  .dark {
+    /* Dark theme — original lime accent on near-black surfaces */
+    --bg: 10 10 10;
+    --bg2: 17 17 17;
+    --bg3: 24 24 24;
+    --card: 20 20 20;
+    --accent: 200 255 0;          /* lime */
+    --accent-fg: 0 0 0;
+    --accent2: 0 255 178;
+    --accent3: 155 138 255;
+    --muted: 136 136 136;
+    --text: 240 240 240;
+    --fg: 255 255 255;
+    --scroll-track: 10 10 10;
+    --scroll-thumb: 31 31 31;
+    --scroll-thumb-hover: 42 42 42;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Inter's modern alternates: 'cv11' = single-storey a, 'ss01' = open digits,
+       'ss03' = curved l. Plus standard kerning + ligatures for polish. */
+    font-feature-settings: 'kern', 'liga', 'calt', 'cv11', 'ss01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Smooth color transition when toggling themes */
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Bricolage Grotesque is a variable font with optical sizing — let the browser
+     pick the right cut automatically based on rendered size. */
+  h1, h2, h3, h4 {
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-fg;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--scroll-track));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--scroll-thumb));
+    border-radius: 8px;
+    border: 2px solid rgb(var(--scroll-track));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--scroll-thumb-hover));
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-24;
+  }
+
+  /* Constrains inner content on ultra-wide screens. 1440px gives a ~75% fill on 1920p
+     screens while still leaving generous breathing room. */
+  .wrap {
+    @apply max-w-[1440px] mx-auto w-full;
+  }
+
+  .section-pad {
+    @apply py-20 md:py-24 lg:py-28 2xl:py-32;
+  }
+
+  .section-label {
+    @apply text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-3;
+  }
+
+  .section-title {
+    @apply font-display font-extrabold leading-[1.05] tracking-tightest
+      text-3xl sm:text-4xl md:text-5xl lg:text-[56px] 2xl:text-[64px];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-accent text-accent-fg font-bold text-[13px] px-6 py-3 rounded-md cursor-pointer transition-all duration-200 hover:-translate-y-[1px] hover:shadow-glow-accent active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 bg-transparent text-text font-medium text-[13px] px-6 py-3 rounded-md border border-line cursor-pointer transition-all duration-200 hover:border-fg/25 hover:bg-fg/[0.03];
+  }
+
+  .tag {
+    @apply px-3 py-1 bg-bg3 border border-line rounded-full text-[11px] text-muted hover:text-text hover:border-fg/20 transition-colors;
+  }
+}
+
+@layer utilities {
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgb(var(--accent) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--accent) / 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide native cursor only on fine-pointer (mouse) devices so touch UX is unaffected. */
+  @media (hover: hover) and (pointer: fine) {
+    .has-custom-cursor,
+    .has-custom-cursor a,
+    .has-custom-cursor button,
+    .has-custom-cursor input,
+    .has-custom-cursor textarea,
+    .has-custom-cursor [role='button'] {
+      cursor: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-grid-shift,
+    .animate-floaty {
+      animation: none !important;
+    }
+  }
+}
