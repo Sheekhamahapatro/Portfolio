@@ -252,21 +252,21 @@ export const certifications = [
 export const testimonials = [
   {
     text: "Sheekha pairs a designer's eye with an engineer's discipline. Her React handoffs ship with the same care as her Figma frames — accessible, pixel-perfect, and easy to maintain.",
-    name: 'Aditya Sharma',
+    name: 'Vikram Singh',
     role: 'Lead Engineer, Softlabs Infotech',
     initials: 'AS',
     color: 'accent',
   },
   {
     text: "From day one of her internship she asked the questions a senior would. The prototypes she handed off were clear, accessible, and shippable without rework.",
-    name: 'Priya Iyer',
-    role: 'Senior Designer, Orionix Systems',
+    name: 'Krishna Parmar',
+    role: 'CTO, Orionix Systems',
     initials: 'PI',
     color: 'accent2',
   },
   {
     text: "Sheekha rebuilt our Angular flows with a complete rethink of validation and error states. Support tickets dropped overnight — and the UI looks better than ever.",
-    name: 'Rohan Mehta',
+    name: 'Manoj Kumar',
     role: 'Founder, KDD Educations',
     initials: 'RM',
     color: 'accent3',
