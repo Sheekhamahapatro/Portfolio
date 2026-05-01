@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,3 +45,51 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <!-- Set theme synchronously before paint to avoid a flash of the wrong theme. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = saved === 'light' || saved === 'dark' ? saved : (prefersDark ? 'dark' : 'dark');
+          document.documentElement.classList.add(theme);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#0A0A0A' : '#FAFAFC');
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Sheekha Mahapatro — UX/UI Designer & Frontend Developer building accessible, pixel-accurate digital products in React, Next.js, and Angular."
+    />
+    <meta name="author" content="Sheekha Mahapatro" />
+    <meta property="og:title" content="Sheekha Mahapatro — UX / UI Designer & Frontend Developer" />
+    <meta
+      property="og:description"
+      content="UX/UI designer who codes — bridging Figma craft with pixel-accurate React, Next.js, and Angular."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Sheekha Mahapatro — UX / UI Designer & Frontend Developer</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+>>>>>>> Stashed changes
