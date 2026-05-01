@@ -23,8 +23,8 @@ export default {
         line: 'rgb(var(--fg) / 0.08)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['"Bricolage Grotesque"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Fraunces', 'serif'],
       },
       letterSpacing: {
         tightest: '-0.05em',

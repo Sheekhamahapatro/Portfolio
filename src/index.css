@@ -3,42 +3,38 @@
 @tailwind utilities;
 
 @layer base {
-  /* Theme tokens. Channels are stored as space-separated RGB triplets so Tailwind's
-     `<alpha-value>` modifier keeps working (e.g. `bg-bg/80`). */
   :root {
-    /* Light theme — blue accent on near-white surfaces */
-    --bg: 250 250 252;
-    --bg2: 244 245 249;
-    --bg3: 234 236 242;
-    --card: 255 255 255;
-    --accent: 37 99 235;          /* blue-600 */
-    --accent-fg: 255 255 255;     /* white text on blue button */
-    --accent2: 14 165 233;        /* sky-500 */
-    --accent3: 99 102 241;        /* indigo-500 */
-    --muted: 100 116 139;         /* slate-500 */
-    --text: 15 23 42;             /* slate-900 */
-    --fg: 15 23 42;
-    --scroll-track: 244 245 249;
-    --scroll-thumb: 203 213 225;
-    --scroll-thumb-hover: 148 163 184;
+    --bg: 10 10 10;
+    --bg2: 20 20 20;
+    --bg3: 20 20 20;
+    --card: 20 20 20;
+    --accent: 200 240 74;
+    --accent-fg: 10 10 10;
+    --accent2: 200 240 74;
+    --accent3: 200 240 74;
+    --muted: 245 242 238;
+    --text: 245 242 238;
+    --fg: 245 242 238;
+    --scroll-track: 10 10 10;
+    --scroll-thumb: 30 30 30;
+    --scroll-thumb-hover: 50 50 50;
   }
 
   .dark {
-    /* Dark theme — original lime accent on near-black surfaces */
     --bg: 10 10 10;
-    --bg2: 17 17 17;
-    --bg3: 24 24 24;
+    --bg2: 20 20 20;
+    --bg3: 20 20 20;
     --card: 20 20 20;
-    --accent: 200 255 0;          /* lime */
-    --accent-fg: 0 0 0;
-    --accent2: 0 255 178;
-    --accent3: 155 138 255;
-    --muted: 136 136 136;
-    --text: 240 240 240;
-    --fg: 255 255 255;
+    --accent: 200 240 74;
+    --accent-fg: 10 10 10;
+    --accent2: 200 240 74;
+    --accent3: 200 240 74;
+    --muted: 245 242 238;
+    --text: 245 242 238;
+    --fg: 245 242 238;
     --scroll-track: 10 10 10;
-    --scroll-thumb: 31 31 31;
-    --scroll-thumb-hover: 42 42 42;
+    --scroll-thumb: 30 30 30;
+    --scroll-thumb-hover: 50 50 50;
   }
 
   *,
@@ -56,20 +52,26 @@
     font-size: 15px;
     line-height: 1.6;
     overflow-x: hidden;
-    /* Inter's modern alternates: 'cv11' = single-storey a, 'ss01' = open digits,
-       'ss03' = curved l. Plus standard kerning + ligatures for polish. */
     font-feature-settings: 'kern', 'liga', 'calt', 'cv11', 'ss01', 'ss03';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* Smooth color transition when toggling themes */
     transition: background-color 0.25s ease, color 0.25s ease;
   }
 
-  /* Bricolage Grotesque is a variable font with optical sizing — let the browser
-     pick the right cut automatically based on rendered size. */
   h1, h2, h3, h4 {
     font-optical-sizing: auto;
+  }
+
+  body,
+  main,
+  section {
+    margin: 0;
+  }
+
+  main > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   ::selection {
@@ -160,5 +162,78 @@
     .animate-floaty {
       animation: none !important;
     }
+  }
+}
+
+.hero-fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-fade-delay {
+  animation-delay: 0.14s;
+}
+
+.hero-scroll-cue {
+  animation-delay: 0.5s;
+}
+
+.hero-strip {
+  animation-delay: 0.3s;
+}
+
+.hero-dot-pulse {
+  animation: dotPulse 2.2s ease-in-out infinite;
+}
+
+.hero-scroll-dot {
+  animation: scrollDotBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes scrollDotBounce {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 780px) {
+  .hero-scroll-cue {
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+
+  .hero-strip-divider {
+    display: none;
   }
 }
