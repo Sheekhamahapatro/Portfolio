@@ -186,7 +186,7 @@
 }
 
 .hero-scroll-dot {
-  animation: scrollDotBounce 1.8s ease-in-out infinite;
+  animation: scrollBounce 1.8s ease-in-out infinite;
 }
 
 @keyframes fadeUp {
@@ -212,14 +212,18 @@
   }
 }
 
-@keyframes scrollDotBounce {
+@keyframes scrollBounce {
   0% {
     opacity: 1;
     transform: translateY(0);
   }
-  70% {
+  60% {
     opacity: 0;
     transform: translateY(18px);
+  }
+  61% {
+    opacity: 0;
+    transform: translateY(0);
   }
   100% {
     opacity: 1;
@@ -229,8 +233,7 @@
 
 @media (max-width: 780px) {
   .hero-scroll-cue {
-    left: 50% !important;
-    transform: translateX(-50%);
+    bottom: 28px !important;
   }
 
   .hero-strip-divider {

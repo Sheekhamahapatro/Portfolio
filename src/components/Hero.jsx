@@ -114,10 +114,9 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hero-fade-up hero-scroll-cue absolute bottom-[38px] left-[52px] flex flex-col items-center gap-[10px]">
-          <span className="text-[11px] uppercase tracking-[0.1em] text-[rgba(245,242,238,0.3)]">SCROLL</span>
+        <div className="hero-fade-up hero-scroll-cue absolute z-10 bottom-[36px] left-1/2 -translate-x-1/2">
           <span
-            className="relative inline-flex h-[44px] w-[28px] items-start justify-center rounded-[14px] border pt-[7px]"
+            className="relative inline-flex h-[44px] w-[28px] items-start justify-center rounded-[14px] border bg-transparent pt-[7px]"
             style={{ borderWidth: '1.5px', borderColor: 'rgba(255,255,255,0.15)' }}
           >
             <span className="hero-scroll-dot h-[5px] w-[5px] rounded-full bg-[#c8f04a]" />
